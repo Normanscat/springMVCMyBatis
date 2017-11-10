@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/mvc
+                http://www.springframework.org/schema/mvc/spring-mvc.xsd
+				http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- 自动注入 -->
+	<!-- 用于数据绑定、数字@numberformat和 日期格式@datatimeformat以及xml和json默认支持 -->
+	<mvc:annotation-driven />
+	<!-- 配置静态资源 -->
+	<!-- 加入对js/gif/png等静态资源的处理 -->
+	<mvc:default-servlet-handler />
+	<!-- 指定默认路径 -->
+	<mvc:view-controller path="/" view-name="redirect:/index" />
+	<!-- 配置jsp显示试图配置器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 扫描指定路径下的类 -->
+	<context:component-scan base-package="com.qingshixun.module">
+		<!--扫描带有@Controller注解的类 -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<!--扫描带有@Service注解的类 -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+	</context:component-scan>
+</beans>
