@@ -1,9 +1,3 @@
-/*****************************************************************************
- * Copyright (c) 2016, www.qingshixun.com
- *
- * All rights reserved
- *
-*****************************************************************************/
 package com.qingshixun.module.index.action;
 
 import org.springframework.stereotype.Controller;
